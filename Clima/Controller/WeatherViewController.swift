@@ -46,13 +46,22 @@ class WeatherViewController: UIViewController , UITextFieldDelegate ,WeatherMana
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city = searchTextField.text {
-            weatherManager.fetchWeather(cityName: city)
+            weatherManager.fetchWeather(cityName: city);
         }
         searchTextField.text = ""
     }
     
-    func didUpdateWeather(weather:WeatherModal){
-        print(weather.temperature)
+    func didUpdateWeather(_ WeatherManager : WeatherManager, weather : WeatherModal) {
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = weather.temperatureString;
+            self.conditionImageView.image = UIImage(systemName : weather.conditionTempIcon)
+            self.cityLabel.text = weather.cityName;
+        }
+        
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
     }
     
 }

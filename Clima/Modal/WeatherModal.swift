@@ -18,7 +18,7 @@ struct WeatherModal {
         return String(format: "%.1f", temperature)
     }
     
-    var conditionName : String {
+    var conditionTempIcon : String {
         switch conditionId {
         case 200...232:
             return "cloud.drizzle"
