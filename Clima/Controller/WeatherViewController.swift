@@ -12,6 +12,7 @@ class WeatherViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad();
         
         locationManager.delegate = self
@@ -19,8 +20,6 @@ class WeatherViewController: UIViewController {
         locationManager.requestLocation();
         searchTextField.delegate = self;
         weatherManager.delegate = self;
-        
-
     }
     
     
